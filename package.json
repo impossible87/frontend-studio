@@ -1,0 +1,14 @@
+{
+  "name": "frontend-studio-skill",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Typography, reference-led components, and verified frontend motion.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test frontend-studio/scripts/extract_tokens.test.mjs",
+    "check": "node scripts/check.mjs"
+  }
+}

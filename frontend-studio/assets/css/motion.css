@@ -1,0 +1,74 @@
+/* motion.css — 动效工具（时长/缓动来自 references/05） */
+:root {
+  /* 缓动：默认 ease-out；对称切换 ease-in-out；抽屉 ease-drawer；退场 ease-in */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-emphasis: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* 常见功能动效起点；空间重排与叙事按机制设计，核心操作立即响应 */
+  --dur-press: 120ms;    /* 按下反馈 100–160 */
+  --dur-tip: 160ms;      /* tooltip 125–200 */
+  --dur-menu: 200ms;     /* 下拉 150–250 */
+  --dur-panel: 300ms;    /* Modal/Drawer 200–500 */
+  --dur-toast: 400ms;
+  --dur-micro: 120ms;
+  --dur-short: 200ms;
+  --dur-section: 520ms;  /* 滚动进场 400–600 */
+  --dur-hero: 700ms;     /* 常见首屏片段起点；完整叙事按机制设计，主要内容立即可读 */
+  --stagger: 60ms;       /* 同组递增 30–80 */
+}
+
+/* 通用交互反馈：只动 transform / opacity */
+.pressable { transition: transform var(--dur-micro) var(--ease-out); }
+.pressable:active { transform: scale(0.98); }
+
+.lift { transition: transform var(--dur-short) var(--ease-out); }
+@media (hover: hover) { .lift:hover { transform: translateY(-2px); } }
+
+/* 渐进增强：初始化失败、等待触发期间都保持内容可见。 */
+[data-reveal], [data-enter] { opacity: 1; transform: none; }
+@keyframes element-enter {
+  from { opacity: 0.65; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+.js [data-reveal].is-in {
+  animation: element-enter var(--dur-section) var(--ease-emphasis);
+  animation-delay: calc(var(--reveal-index, 0) * var(--stagger));
+}
+
+/* 首屏编排：给子元素加 data-enter 与 --i 序号 */
+.is-ready [data-enter] {
+  animation: element-enter var(--dur-hero) var(--ease-emphasis);
+  animation-delay: calc(var(--i, 0) * var(--stagger));
+}
+
+/* 无限跑马灯（尊重减弱动态） */
+@keyframes marquee-x { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee { overflow: hidden; }
+.marquee > * { display: flex; width: max-content; animation: marquee-x 30s linear infinite; }
+.marquee:hover > * { animation-play-state: paused; }
+
+/* 加载骨架（保持尺寸，避免 CLS） */
+.skeleton { background: linear-gradient(90deg, var(--bg-subtle), var(--paper-3), var(--bg-subtle)); background-size: 200% 100%; animation: sk 1.4s linear infinite; }
+@keyframes sk { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+
+/* 页面切换（渐进增强） */
+@view-transition { navigation: auto; }
+::view-transition-old(root) { animation: vt-out 160ms var(--ease-in) both; }
+::view-transition-new(root) { animation: vt-in 260ms var(--ease-emphasis) both; }
+@keyframes vt-out { to { opacity: 0; transform: translateY(-4px); } }
+@keyframes vt-in { from { opacity: 0; transform: translateY(8px); } }
+
+/* 无障碍：减弱动态 —— 停掉位移与循环，保留状态可辨 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .marquee > * { animation: none; }
+  [data-reveal], [data-enter] { opacity: 1 !important; transform: none !important; }
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+}

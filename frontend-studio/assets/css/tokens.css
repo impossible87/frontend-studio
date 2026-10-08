@@ -1,0 +1,206 @@
+/* tokens.css — 设计 token 真源（三层结构）
+   用法：复制进项目 src/styles/tokens.css，只改这一层就能换整个视觉方向。
+   原则见 references/03-color-tokens.md */
+
+:root {
+  /* ---------- 1. primitive：原始色阶（改这里换品牌色） ---------- */
+  /* 中性色带极低彩度（0.005–0.02），不要纯灰 */
+  --paper-0:   oklch(0.985 0.004 85);
+  --paper-1:   oklch(0.965 0.006 85);
+  --paper-2:   oklch(0.935 0.008 85);
+  --paper-3:   oklch(0.885 0.010 85);
+
+  --ink-400:   oklch(0.62 0.010 265);
+  --ink-500:   oklch(0.54 0.012 265);
+  --ink-600:   oklch(0.46 0.013 265);
+  --ink-700:   oklch(0.37 0.014 265);
+  --ink-800:   oklch(0.28 0.015 265);
+  --ink-900:   oklch(0.20 0.016 265);
+
+  /* 强调色：全站唯一。换方向时只改这一组 */
+  --accent-100: oklch(0.94 0.03 32);
+  --accent-300: oklch(0.80 0.10 32);
+  --accent-500: oklch(0.56 0.17 32);   /* 白字压其上 4.9:1；当作正文链接 4.84:1 */
+  --accent-600: oklch(0.50 0.17 32);   /* hover：只改明度 */
+  --accent-700: oklch(0.44 0.15 32);   /* active */
+
+  --success-500: oklch(0.60 0.14 150);
+  --warning-500: oklch(0.72 0.15 75);
+  --danger-500:  oklch(0.56 0.19 25);
+
+  /* ---------- 2. semantic：页面角色（组件只引用这一层） ---------- */
+  --bg:            var(--paper-0);
+  --bg-subtle:     var(--paper-1);
+  --surface:       var(--paper-0);
+  --surface-raised:var(--paper-0);
+  --fg:            var(--ink-900);
+  --fg-muted:      var(--ink-600);
+  --fg-subtle:     var(--ink-500);
+  --fg-inverse:    var(--paper-0);
+  --border:        var(--paper-3);
+  --border-strong: var(--ink-400);
+  --accent:        var(--accent-500);
+  --accent-hover:  var(--accent-600);
+  --accent-active: var(--accent-700);
+  --accent-fg:     oklch(0.99 0.005 32);
+  --focus-ring:    var(--accent-500);
+
+  /* ---------- 排版：角色是唯一真源；字体按主题选择，默认只使用系统回退 ---------- */
+  --font-body: "PingFang SC", "Microsoft YaHei", "Segoe UI", system-ui, sans-serif;
+  --font-display: var(--font-body);
+  --font-heading: var(--font-body);
+  --font-mono: "Cascadia Mono", Consolas, ui-monospace, monospace;
+  --weight-display: 700;
+  --weight-headline: 600;
+  --weight-title: 600;
+  --weight-lead: 400;
+  --weight-body: 400;
+  --weight-label: 600;
+  --weight-caption: 400;
+  --tracking-display: 0;
+  --tracking-headline: 0;
+  --tracking-title: 0;
+  --tracking-lead: 0;
+  --tracking-body: 0;
+  --tracking-label: 0;
+  --tracking-caption: 0;
+  --measure: 32em;        /* 中文按实际文案验证，约 25–40 字 */
+  --measure-latin: 68ch;
+  --measure-display: 16em;
+  --measure-lead: 30em;
+
+  /* 旧项目兼容别名，不再维护另一套阶梯；step-4 映射到展示角色 */
+  --step--1: var(--type-caption);
+  --step-0: var(--type-body);
+  --step-1: var(--type-lead);
+  --step-2: var(--type-title);
+  --step-3: var(--type-headline);
+  --step-4: var(--type-display);
+  --step-5: var(--type-display);
+  --leading-tight: var(--leading-display);
+  --leading-snug: var(--leading-headline);
+  --tracking-tight: var(--tracking-display);
+  --tracking-wide:  0.08em;
+
+  /* ---------- 间距尺度（只用这套值） ---------- */
+  --space-1: 0.25rem; --space-2: 0.5rem;  --space-3: 0.75rem; --space-4: 1rem;
+  --space-5: 1.5rem;  --space-6: 2rem;    --space-7: 3rem;    --space-8: 4rem;
+  --space-9: 6rem;    --space-10: 8rem;
+  --section-y: clamp(3.5rem, 6vw, 7rem);   /* 区块垂直节奏 */
+  --heading-gap: var(--space-4);
+  --copy-gap: var(--space-3);
+  --action-gap: var(--space-6);
+
+  /* ---------- 圆角规则（最多 3 档 + 全圆） ---------- */
+  --radius-sm: 4px;    /* 小控件、标签 */
+  --radius-md: 10px;   /* 卡片、输入框 */
+  --radius-lg: 20px;   /* 大容器 */
+  --radius-full: 9999px;
+
+  /* ---------- 阴影（三级，统一光源） ---------- */
+  --shadow-sm: 0 1px 2px oklch(0.2 0.02 265 / 0.06);
+  --shadow-md: 0 4px 12px oklch(0.2 0.02 265 / 0.08);
+  --shadow-lg: 0 16px 40px oklch(0.2 0.02 265 / 0.12);
+
+  /* ---------- 布局 ---------- */
+  --container: 1200px;
+  --container-narrow: 720px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+
+  color-scheme: light;
+}
+
+:root, [data-type-profile="brand"] {
+  --type-display: clamp(2.25rem, 1.2rem + 3.8vw, 4.5rem);
+  --type-headline: clamp(1.5rem, 1.15rem + 1.2vw, 2.25rem);
+  --type-title: clamp(1.125rem, 1rem + 0.4vw, 1.5rem);
+  --type-lead: clamp(1rem, 0.95rem + 0.3vw, 1.25rem);
+  --type-body: 1rem;
+  --type-label: 0.9375rem;
+  --type-caption: 0.875rem;
+  --leading-display: 1.2;
+  --leading-headline: 1.3;
+  --leading-title: 1.4;
+  --leading-lead: 1.65;
+  --leading-body: 1.7;
+  --leading-label: 1.5;
+  --leading-caption: 1.6;
+}
+
+/* 尺度起点，不是视觉主题。省略属性时采用品牌展示尺度；字体仍在项目 token 层选择。
+   建议挂在 html 或页面容器；不直接给每个小组件挂预设。 */
+[data-type-profile="interface"] {
+  --type-display: clamp(1.75rem, 1.4rem + 1vw, 2.5rem);
+  --type-headline: clamp(1.375rem, 1.2rem + 0.5vw, 1.75rem);
+  --type-title: 1.125rem;
+  --type-lead: 1rem;
+  --type-body: 1rem;
+  --type-label: 0.9375rem;
+  --type-caption: 0.875rem;
+  --leading-display: 1.3;
+  --leading-body: 1.6;
+}
+[data-type-profile="reading"] {
+  --type-display: clamp(2rem, 1.6rem + 1.5vw, 3rem);
+  --type-headline: clamp(1.5rem, 1.3rem + 0.6vw, 1.875rem);
+  --type-title: 1.25rem;
+  --type-lead: 1.125rem;
+  --type-body: 1.125rem;
+  --leading-display: 1.3;
+  --leading-body: 1.8;
+  --measure: 34em;
+}
+
+/* 容器预设下重新绑定旧别名，避免继承根节点已经解析好的值。 */
+[data-type-profile] {
+  --step--1: var(--type-caption);
+  --step-0: var(--type-body);
+  --step-1: var(--type-lead);
+  --step-2: var(--type-title);
+  --step-3: var(--type-headline);
+  --step-4: var(--type-display);
+  --step-5: var(--type-display);
+  --leading-tight: var(--leading-display);
+  --leading-snug: var(--leading-headline);
+  --tracking-tight: var(--tracking-display);
+}
+
+/* 暗色：分层 + 降彩度 + 提亮强调 + 用边框代替阴影 */
+:root[data-theme="dark"], .theme-dark {
+  --bg:            oklch(0.16 0.012 265);
+  --bg-subtle:     oklch(0.19 0.012 265);
+  --surface:       oklch(0.21 0.012 265);
+  --surface-raised:oklch(0.25 0.012 265);
+  --fg:            oklch(0.95 0.005 265);
+  --fg-muted:      oklch(0.76 0.008 265);
+  --fg-subtle:     oklch(0.66 0.008 265);
+  --fg-inverse:    oklch(0.18 0.012 265);
+  --border:        oklch(0.30 0.012 265);
+  --border-strong: oklch(0.52 0.014 265);
+  --accent:        oklch(0.68 0.15 32);
+  --accent-hover:  oklch(0.74 0.14 32);
+  --accent-active: oklch(0.62 0.15 32);
+  --shadow-sm: 0 1px 2px oklch(0 0 0 / 0.4);
+  --shadow-md: 0 4px 12px oklch(0 0 0 / 0.45);
+  --shadow-lg: 0 16px 40px oklch(0 0 0 / 0.5);
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: oklch(0.16 0.012 265);
+    --bg-subtle: oklch(0.19 0.012 265);
+    --surface: oklch(0.21 0.012 265);
+    --surface-raised: oklch(0.25 0.012 265);
+    --fg: oklch(0.95 0.005 265);
+    --fg-muted: oklch(0.76 0.008 265);
+    --fg-subtle: oklch(0.66 0.008 265);
+    --fg-inverse: oklch(0.18 0.012 265);
+    --border: oklch(0.30 0.012 265);
+    --border-strong: oklch(0.52 0.014 265);
+    --accent: oklch(0.68 0.15 32);
+    --accent-hover: oklch(0.74 0.14 32);
+    --accent-active: oklch(0.62 0.15 32);
+    color-scheme: dark;
+  }
+}

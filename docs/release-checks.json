@@ -1,0 +1,146 @@
+{
+  "date": "2026-10-08",
+  "status": "Pre-publication local checks passed",
+  "checks": {
+    "font_tests": {
+      "passed": true,
+      "cases": 10
+    },
+    "package_check": {
+      "passed": true
+    },
+    "skill_format": {
+      "passed": true
+    },
+    "codex_discovery": {
+      "passed": true,
+      "scope": "isolated project",
+      "enabled": true
+    },
+    "rendered_layout_contrast": [
+      {
+        "language": "Chinese",
+        "width": 1280,
+        "state": "initial",
+        "passed": true
+      },
+      {
+        "language": "Chinese",
+        "width": 1280,
+        "state": "expanded",
+        "passed": true
+      },
+      {
+        "language": "Chinese",
+        "width": 1280,
+        "state": "sources",
+        "passed": true
+      },
+      {
+        "language": "English",
+        "width": 1280,
+        "state": "initial",
+        "passed": true
+      },
+      {
+        "language": "English",
+        "width": 1280,
+        "state": "expanded",
+        "passed": true
+      },
+      {
+        "language": "English",
+        "width": 1280,
+        "state": "sources",
+        "passed": true
+      },
+      {
+        "language": "Chinese",
+        "width": 1536,
+        "state": "initial",
+        "passed": true
+      },
+      {
+        "language": "Chinese",
+        "width": 1536,
+        "state": "expanded",
+        "passed": true
+      },
+      {
+        "language": "Chinese",
+        "width": 1536,
+        "state": "sources",
+        "passed": true
+      },
+      {
+        "language": "English",
+        "width": 1536,
+        "state": "initial",
+        "passed": true
+      },
+      {
+        "language": "English",
+        "width": 1536,
+        "state": "expanded",
+        "passed": true
+      },
+      {
+        "language": "English",
+        "width": 1536,
+        "state": "sources",
+        "passed": true
+      }
+    ],
+    "motion_package_smoke": [
+      "product forward/reverse",
+      "studio capture/rapid selection",
+      "tabs keyboard/reduced motion",
+      "English status localization",
+      "1280 package sample/cover",
+      "1536 package sample/cover",
+      "motion-lab.html no-js",
+      "motion-lab.html failure",
+      "motion-lab.html reduced",
+      "motion-lab.en.html no-js",
+      "motion-lab.en.html failure",
+      "motion-lab.en.html reduced"
+    ],
+    "skills_cli": {
+      "version": "1.7.1",
+      "node": "24.19.0",
+      "local_list_found": "frontend-studio",
+      "installed_globally": false
+    },
+    "export_scan": {
+      "passed": true,
+      "scope": "personal absolute paths, selected secret patterns, proxy/dev residue",
+      "files": 58,
+      "note": "Targeted scan, not a general security certification"
+    },
+    "working_and_installed_edition_preserved": {
+      "passed": true,
+      "source_files": 43
+    },
+    "media": {
+      "social_preview_dimensions": [
+        1280,
+        640
+      ],
+      "social_preview_bytes": 71510,
+      "gif_encoded_frames": 33,
+      "gif_duration_ms": 6880,
+      "rendered_and_visually_inspected": true
+    }
+  },
+  "unrun": [
+    "remote GitHub Actions",
+    "installation from public GitHub URL",
+    "mobile/touch",
+    "cross-browser",
+    "screen reader",
+    "Lighthouse",
+    "quantitative Core Web Vitals",
+    "independent model generation comparison"
+  ],
+  "phase": "Before initial push; remote installation and GitHub Actions are not part of this record"
+}

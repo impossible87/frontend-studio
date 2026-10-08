@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="验证品牌展示、操作界面和长文阅读的中文排版尺度、断句、动态输入与字体回退。">
+  <title>文字与秩序 — Frontend Studio 排版样张</title>
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <style>
+    /* 样张的构图与测试内容，不作为通用网站模板；颜色全部来自现有 tokens。 */
+    :root { --bg: var(--paper-0); --surface: var(--paper-0); --lab-rule: var(--border); }
+    .lab-header { padding-block: var(--space-7); border-bottom: 1px solid var(--lab-rule); }
+    .lab-header .container { display: grid; grid-template-columns: 1fr auto; gap: var(--space-5); align-items: end; }
+    .lab-header h1 { margin-top: var(--space-3); }
+    .lab-note { color: var(--fg-muted); max-width: 28em; }
+    .lab-header nav { display: flex; flex-wrap: wrap; gap: var(--space-4); }
+    .lab-header nav a { font-size: var(--type-label); color: var(--fg-muted); }
+    .specimen { padding-block: var(--section-y); border-bottom: 1px solid var(--lab-rule); }
+    .specimen-heading { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-5); margin-bottom: var(--space-6); }
+    .specimen-heading p { color: var(--fg-muted); }
+    .preview { padding: clamp(1.25rem, 4vw, 3rem); background: var(--surface); border: 1px solid var(--lab-rule); border-radius: var(--radius-sm); min-width: 0; }
+    .brand-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: var(--space-8); align-items: end; }
+    .brand-copy > p { margin-top: var(--space-5); color: var(--fg-muted); max-width: var(--measure-lead); }
+    .actions { display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; margin-top: var(--action-gap); }
+    .index-list { list-style: none; padding: 0; border-top: 1px solid var(--lab-rule); }
+    .index-list li { display: grid; grid-template-columns: 3em 1fr; gap: var(--space-3); padding-block: var(--space-5); border-bottom: 1px solid var(--lab-rule); }
+    .index-list span { color: var(--fg-muted); }
+    .index-list p { margin-top: var(--space-2); color: var(--fg-muted); }
+    .workspace-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-5); }
+    .workspace-top > div > p { margin-top: var(--space-3); color: var(--fg-muted); }
+    .workspace-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: var(--space-7); margin-top: var(--space-7); }
+    table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    th, td { padding: var(--space-4) var(--space-3); text-align: left; border-bottom: 1px solid var(--lab-rule); vertical-align: top; }
+    th { color: var(--fg-muted); font-size: var(--type-label); font-weight: var(--weight-label); }
+    th:first-child { width: 64%; }
+    th:last-child { width: 36%; }
+    td small { display: block; margin-top: var(--space-2); color: var(--fg-muted); }
+    .field { display: grid; gap: var(--space-2); margin-top: var(--space-5); }
+    input, textarea { width: 100%; min-width: 0; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); padding: var(--space-3); background: var(--surface); }
+    textarea { min-height: 7rem; resize: vertical; }
+    .form-note { margin-top: var(--space-3); color: var(--fg-muted); }
+    .form-status { margin-top: var(--space-4); overflow-wrap: anywhere; }
+    .reading { max-width: 52rem; margin-inline: auto; }
+    .reading > h4 { margin-top: var(--space-7); margin-bottom: var(--space-4); }
+    .reading > p { margin-top: var(--space-5); }
+    .reading .type-caption { color: var(--fg-muted); }
+    .glyphs { padding-top: var(--space-7); border-top: 1px solid var(--lab-rule); margin-top: var(--space-7); }
+    .glyphs p { margin-top: var(--space-3); }
+    .lab-footer { padding-block: var(--space-7); color: var(--fg-muted); }
+    @media (max-width: 800px) {
+      .lab-header .container, .brand-grid, .workspace-grid { grid-template-columns: minmax(0, 1fr); }
+      .brand-grid { gap: var(--space-7); }
+      .specimen-heading { flex-direction: column; gap: var(--space-2); }
+      .lab-header nav { margin-top: var(--space-3); }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到样张</a>
+  <header class="lab-header">
+    <div class="container">
+      <div>
+        <p class="type-caption lab-note">Frontend Studio · 排版验证样张</p>
+        <h1>文字有主次，页面有秩序。</h1>
+        <p class="type-body lab-note">同一内容，三种阅读尺度。所有示例内容仅用于排版测试；当前使用系统字体回退。</p>
+      </div>
+      <nav aria-label="样张导航"><a href="#brand">品牌展示</a><a href="#interface">操作界面</a><a href="#reading">长文阅读</a></nav>
+    </div>
+  </header>
+  <main id="main" class="container">
+    <section id="brand" class="specimen" aria-labelledby="brand-label">
+      <div class="specimen-heading"><h2 id="brand-label">品牌展示</h2><p class="type-caption">清晰的视觉锚点，舒展的阅读节奏</p></div>
+      <div class="preview brand-grid" data-type-profile="brand">
+        <div class="brand-copy">
+          <h3 class="type-display"><span class="type-line">把复杂的日常，</span><span class="type-line"><span class="type-phrase">整理成清晰的</span><span class="type-phrase">下一步。</span></span></h3>
+          <p class="type-lead">把资料、计划与行动放在同一处。先看清重要的事情，再从容安排今天。</p>
+          <div class="actions"><a class="btn btn-primary" href="#interface">查看操作样张</a><a href="#reading">阅读设计说明</a></div>
+        </div>
+        <ul class="index-list">
+          <li><span class="type-caption">内容</span><div><h4>先看清重点</h4><p>让最重要的信息先被看见。</p></div></li>
+          <li><span class="type-caption">结构</span><div><h4>再建立秩序</h4><p>用分组、对齐和留白安排阅读。</p></div></li>
+          <li><span class="type-caption">表达</span><div><h4>最后表达个性</h4><p>字体和视觉气质随主题选择。</p></div></li>
+        </ul>
+      </div>
+    </section>
+    <section id="interface" class="specimen" aria-labelledby="interface-label">
+      <div class="specimen-heading"><h2 id="interface-label">操作界面</h2><p class="type-caption">标题不抢操作，信息稳定可扫描</p></div>
+      <div class="preview" data-type-profile="interface">
+        <div class="workspace-top"><div><h3 class="type-display"><span class="type-line">把复杂的日常，</span><span class="type-line"><span class="type-phrase">整理成清晰的</span><span class="type-phrase">下一步。</span></span></h3><p class="type-body">把资料、计划与行动放在同一处。先看清重要的事情，再从容安排今天。</p></div></div>
+        <div class="workspace-grid">
+          <div><h4>资料清单</h4>
+            <table aria-label="示例资料与修改时间"><thead><tr><th scope="col">文件</th><th scope="col">示例时间</th></tr></thead><tbody>
+              <tr><td>项目交接说明<small class="type-caption">短中文标题</small></td><td class="tnum">09:41</td></tr>
+              <tr><td>品牌官网内容整理与交付注意事项<small class="type-caption">多行中文标题</small></td><td class="tnum">10:05</td></tr>
+              <tr><td>FrontendStudio_中文排版_Review_2026_FinalVersion.md<small class="type-caption">中英文长文件名</small></td><td class="tnum">12:30</td></tr>
+            </tbody></table>
+          </div>
+          <form id="sample-form">
+            <h4>下一步安排</h4>
+            <div class="field"><label for="task-name">任务名称</label><input id="task-name" name="task" required value="核对中文标题与按钮的阅读层级"></div>
+            <div class="field"><label for="task-note">补充说明</label><textarea id="task-note" name="note">这是一段可以编辑的动态中文。请尝试输入复杂汉字、English words、数字和较长的文件名。</textarea></div>
+            <p class="type-caption form-note">仅在本页展示输入结果，不保存数据。</p>
+            <div class="actions"><button class="btn btn-primary" type="submit">检查输入展示</button><button class="btn" type="reset">重置</button></div>
+            <p id="form-status" class="type-body form-status" role="status"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+    <section id="reading" class="specimen" aria-labelledby="reading-label">
+      <div class="specimen-heading"><h2 id="reading-label">长文阅读</h2><p class="type-caption">适合连续阅读的行长与段落节奏</p></div>
+      <article class="preview reading" data-type-profile="reading">
+        <h3 class="type-display"><span class="type-line">把复杂的日常，</span><span class="type-line"><span class="type-phrase">整理成清晰的</span><span class="type-phrase">下一步。</span></span></h3>
+        <p class="type-lead">把资料、计划与行动放在同一处。先看清重要的事情，再从容安排今天。</p>
+        <h4 class="type-headline">先建立秩序，再表达个性</h4>
+        <p>页面的气质来自内容与形式之间的关系。品牌展示需要一个有分量的标题，操作界面需要稳定的标签与反馈，长文则需要让人能够持续阅读的行长和段落节奏。</p>
+        <p>一个字体家族也可以承担不同的角色。先分清标题、正文和辅助信息，再调整字号、字重与空间；如果需要第二种字体，应当让它承担明确的工作，而不是为了混搭而混搭。</p>
+        <h4 class="type-headline">看真实内容，而不是只看字号</h4>
+        <p>短标题可以紧凑，长标题需要自然断句。中英文混排时，Frontend Studio、API、WOFF2 等词语也应当清楚易读。手机屏幕上要重新安排布局，保留必要的文字和操作。</p>
+        <div class="glyphs"><h4>字形与数字检查</h4><p class="type-body">中文标点：「阅读」、（层级）；“秩序”与《设计》。复杂汉字：曦、繁、赢、鬱。</p><p class="type-body tnum">0123456789 · 09:41 · 2026/10/08 · 1,280.50</p><p class="type-caption">这是注释角色。核心说明与操作不使用注释字号。</p></div>
+      </article>
+    </section>
+  </main>
+  <footer class="lab-footer"><div class="container"><p class="type-caption">三种尺度是验证起点，字体和构图仍由实际主题决定。</p></div></footer>
+  <script>
+    // 样张只展示输入，不伪装成持久化功能。
+    const form = document.getElementById('sample-form');
+    const status = document.getElementById('form-status');
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      status.textContent = '输入展示：' + new FormData(form).get('task');
+    });
+    form.addEventListener('reset', () => { status.textContent = ''; });
+  </script>
+</body>
+</html>

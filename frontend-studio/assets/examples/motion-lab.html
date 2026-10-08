@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light" data-type-profile="brand">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Frontend Studio 三主题动态原型：产品滚动联动、作品展开重排、研究视角切换。">
+  <title>创意机制实验室 · Frontend Studio</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="motion-lab.css">
+  <script src="motion-lab.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要内容</a>
+<header class="lab-header container">
+  <strong class="type-label">Frontend Studio / 创意机制实验室</strong>
+  <nav aria-label="样例导航"><a href="#product">产品</a><a href="#studio">工作室</a><a href="#research">研究工具</a></nav>
+</header>
+<main id="main" class="container">
+  <div class="lab-intro">
+    <p class="eyebrow">三种主题 · 三种信息关系</p>
+    <h1 class="type-display"><span class="type-line">让组件的变化，</span><span class="type-line">解释内容本身。</span></h1>
+    <p class="type-lead">向下滚动或直接操作，查看联动、展开与切换。<br>以下品牌、项目与研究材料均为机制演示，不代表真实业务或研究结论。</p>
+  </div>
+
+  <section id="product" class="sample" aria-labelledby="product-heading">
+    <div class="sample-head">
+      <div><span class="type-caption">01 / 产品官网</span><h2 id="product-heading">把一段想法，推进成一次交付。</h2></div>
+      <p>内容顺序决定演示顺序。三个阶段共用一个工作区，让变化的位置始终可追踪。</p>
+    </div>
+    <div id="story" class="story">
+      <div class="story-stage" data-active-step="0">
+        <div class="story-copy">
+          <p class="eyebrow">序流 · 团队协作工具 / 演示品牌</p>
+          <h3><span class="type-line">不只看功能，</span><span class="type-line">看工作怎样发生。</span></h3>
+          <p>从原始记录到清晰任务，再到交付说明。向下滚动查看过程，也可以直接选择阶段。</p>
+          <ol class="steps">
+            <li class="is-active"><button type="button" data-step="0" aria-controls="product-panel-0" aria-pressed="true"><span class="step-number">01</span>收集散落的想法</button><p>保留上下文，让讨论不再从头开始。</p></li>
+            <li><button type="button" data-step="1" aria-controls="product-panel-1" aria-pressed="false"><span class="step-number">02</span>形成可执行的任务</button><p>明确顺序、负责人和下一步动作。</p></li>
+            <li><button type="button" data-step="2" aria-controls="product-panel-2" aria-pressed="false"><span class="step-number">03</span>带着依据完成交付</button><p>把决定与结果一起留下，方便下一次迭代。</p></li>
+          </ol>
+        </div>
+        <div class="product-demo" data-type-profile="interface">
+          <div class="demo-bar"><strong>工作区 / 春季发布</strong><span>演示内容</span></div>
+          <div class="product-panels">
+            <article class="product-panel" id="product-panel-0" aria-labelledby="product-title-0">
+              <h4 id="product-title-0">原始记录</h4><p>“介绍太长了，读者还没看到产品就离开了。”</p>
+              <div class="note-lines"><span>保留：真实产品界面</span><span>调整：介绍与操作的先后关系</span><span>下一步：做一个能实际运行的区块</span></div>
+            </article>
+            <article class="product-panel" id="product-panel-1" aria-labelledby="product-title-1">
+              <h4 id="product-title-1">执行清单</h4>
+              <div class="task-row"><span aria-hidden="true">✓</span><span>梳理首屏主张</span><small>内容</small></div>
+              <div class="task-row"><span aria-hidden="true">✓</span><span>接入产品演示</span><small>设计</small></div>
+              <div class="task-row"><span aria-hidden="true">○</span><span>验证切换与回退</span><small>开发</small></div>
+              <p>每个任务都指向同一份原始讨论。</p>
+            </article>
+            <article class="product-panel" id="product-panel-2" aria-labelledby="product-title-2">
+              <h4 id="product-title-2">交付摘要</h4><div class="delivery-title">主张清楚。<br>过程可见。</div>
+              <p>首屏、演示与操作顺序已整理。下一步用真实访问反馈检验设计判断。</p>
+            </article>
+          </div>
+          <svg class="flow-track" viewBox="0 0 480 32" role="img" aria-label="工作流程：收集、执行、交付">
+            <path class="rail" d="M24 16H456" fill="none" stroke-width="2"/>
+            <path id="flow" class="line" d="M24 16H456" fill="none" stroke-width="3" pathLength="1"/>
+            <circle id="flow-marker" class="marker" cx="24" cy="16" r="6"/>
+          </svg>
+          <div class="flow-labels"><span>收集</span><span>执行</span><span>交付</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="mechanism-note">滚动与步骤联动；减少动态时保留点击切换，停止固定场景与连续进度。所有说明始终可读。</p>
+  </section>
+
+  <section id="studio" class="sample" aria-labelledby="studio-heading">
+    <div class="sample-head">
+      <div><span class="type-caption">02 / 设计工作室</span><h2 id="studio-heading">作品展开，思路也随之展开。</h2></div>
+      <p>不把作品压进同样的卡片。保留清晰的索引，详情在原位出现，其他项目顺着空间移动。</p>
+    </div>
+    <div class="works">
+      <details class="work" open>
+        <summary aria-controls="work-body-0"><span class="work-index">01 / 2026</span><span class="work-name">之间 · 阅读空间</span><span class="work-category">品牌识别 / 空间导视</span><span class="work-toggle" aria-hidden="true">+</span></summary>
+        <div id="work-body-0" class="work-body">
+          <div class="work-art" role="img" aria-label="阅读空间概念字样：之间"><span class="art-word">之间</span><span class="art-rule"></span><span class="art-caption">在城市与书页之间</span></div>
+          <div><h3>让阅读拥有自己的节奏。</h3><p>以书页边缘和行间留白建立识别。导视减少干扰，书籍与人的活动成为空间里更重要的内容。</p><a href="#studio-notes">查看演示项目说明</a></div>
+        </div>
+      </details>
+      <details class="work">
+        <summary aria-controls="work-body-1"><span class="work-index">02 / 2026</span><span class="work-name">方序 · 城市档案</span><span class="work-category">编辑设计 / 数字档案</span><span class="work-toggle" aria-hidden="true">+</span></summary>
+        <div id="work-body-1" class="work-body">
+          <div class="work-art" role="img" aria-label="城市档案概念字样：方序"><span class="art-word">方序</span><span class="art-rule"></span><span class="art-caption">把城市的细节收进目录</span></div>
+          <div><h3>让一个档案，连接更多线索。</h3><p>以街区、年份与事件建立索引，保留资料原有的复杂度。数字页面沿用纸本的编辑顺序，先读线索，再进入材料。</p><p>项目详情与索引共同移动，让阅读位置保持连续。</p><a href="#studio-notes">查看演示项目说明</a></div>
+        </div>
+      </details>
+      <details class="work">
+        <summary aria-controls="work-body-2"><span class="work-index">03 / 2026</span><span class="work-name">回声 · 声音计划</span><span class="work-category">视觉系统 / 活动网站</span><span class="work-toggle" aria-hidden="true">+</span></summary>
+        <div id="work-body-2" class="work-body">
+          <div class="work-art" role="img" aria-label="声音计划概念字样：回声"><span class="art-word">回声</span><span class="art-rule"></span><span class="art-caption">听见空间留下的声音</span></div>
+          <div><h3>从声音的停顿开始。</h3><p>把节奏转为疏密关系，让时间安排、作品信息与现场素材共享同一种阅读语言。</p><a href="#studio-notes">查看演示项目说明</a></div>
+        </div>
+      </details>
+    </div>
+    <p id="studio-notes" class="mechanism-note">以上均为原创概念项目。详情使用原生 details；无 JavaScript 时仍能展开。过渡只改变局部高度，不缩放文字。</p>
+  </section>
+
+  <section id="research" class="sample" data-type-profile="interface" aria-labelledby="research-heading">
+    <div class="sample-head">
+      <div><span class="type-caption">03 / 知识与研究工具</span><h2 id="research-heading">换一个视角，依据仍然清楚。</h2></div>
+      <p>这里的动效表达“换了哪一层信息”。内容长短可以不同，面板随内容改变，不让页面突然跳动。</p>
+    </div>
+    <div class="research-shell">
+      <aside class="research-brief" aria-label="演示研究问题"><strong>证据工作台 / 演示界面</strong><p class="query">分散练习如何影响<br>长期记忆？</p><p>同一个问题，从概要、材料和下一步三种角度阅读。材料为占位，不构成研究结论。</p></aside>
+      <div>
+        <div id="tabs" class="tablist" data-enhance aria-label="证据视角">
+          <button class="tab" id="tab-0" type="button" aria-controls="panel-0" aria-selected="true">问题概要</button>
+          <button class="tab" id="tab-1" type="button" aria-controls="panel-1" aria-selected="false">证据材料</button>
+          <button class="tab" id="tab-2" type="button" aria-controls="panel-2" aria-selected="false">下一步</button>
+          <span class="tab-indicator" aria-hidden="true"></span>
+        </div>
+        <div id="research-panels">
+          <article class="research-panel" id="panel-0" tabindex="0" aria-labelledby="tab-0">
+            <h3>先明确问题的边界。</h3><p>把学习材料、练习间隔与测验时间分开记录，避免将不同条件下的结果直接合并。</p><div class="evidence-row"><strong>核心变量</strong><span>练习间隔 / 材料难度 / 延迟测验</span></div>
+          </article>
+          <article class="research-panel" id="panel-1" tabindex="0" aria-labelledby="tab-1">
+            <h3>每条判断，都回到材料。</h3><p>以下是待补全的证据结构。真实使用时应接入原文和可核验的引用，不由界面生成研究结论。</p>
+            <div class="evidence-row"><strong>材料 A</strong><span>TODO：补充研究对象、样本与测验条件。</span></div>
+            <div class="evidence-row"><strong>材料 B</strong><span>TODO：补充间隔安排、对照条件及原文页码。</span></div>
+            <div class="evidence-row"><strong>限制</strong><span>TODO：标明适用范围、相互矛盾的材料和仍未知的部分。</span></div>
+          </article>
+          <article class="research-panel" id="panel-2" tabindex="0" aria-labelledby="tab-2">
+            <h3>把未知，变成下一次检索。</h3><ul><li>按研究对象进一步收窄关键词。</li><li>核对原始材料的条件与引用。</li><li>记录相反结果，保留不确定性。</li></ul>
+          </article>
+        </div>
+      </div>
+    </div>
+    <p class="mechanism-note">左右方向键、Home / End 切换标签；Tab 进入内容。快速切换收敛到最新选择，减少动态时直接更新。</p>
+  </section>
+
+  <section id="micro" class="sample" aria-labelledby="micro-heading">
+    <div class="sample-head"><div><span class="type-caption">局部微交互</span><h2 id="micro-heading">小反馈，有明确的用途。</h2></div><p>保留原样例的 SVG 路径、高光与标签指示器机制；它们只在相关区域工作。</p></div>
+    <div class="micro-grid">
+      <article><h3>路线重播</h3><p>路径揭示说明流程的连接关系。</p><svg class="flow-track" viewBox="0 0 480 52" role="img" aria-label="三个步骤连成一条路线"><path id="route" class="line" d="M24 26H456" fill="none" stroke-width="3" pathLength="1"/><circle class="marker" cx="24" cy="26" r="6"/><circle class="marker" cx="240" cy="26" r="6"/><circle class="marker" cx="456" cy="26" r="6"/></svg><button id="replay" class="btn btn-secondary" type="button" data-enhance>重播路线</button></article>
+      <article id="spotlight"><h3>局部探索</h3><p>指针高光只帮助定位。点击或键盘也能标记关注，不把操作藏在悬停里。</p><button id="spot-toggle" class="btn btn-secondary" type="button" data-enhance aria-pressed="false">标记关注</button><p id="spot-status" role="status">点击标记这个区块</p></article>
+    </div>
+  </section>
+</main>
+<footer class="lab-footer container"><p>这是机制样张，不是所有网站的固定外观。直接打开 HTML 即可运行；迁移时按主题改造结构、内容与节奏。</p></footer>
+</body>
+</html>

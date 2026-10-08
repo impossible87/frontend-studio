@@ -1,0 +1,8 @@
+interface:
+  display_name: Frontend Studio
+  short_description: Design deliberate typography and original, verified motion
+  default_prompt: Use $frontend-studio to design or improve my frontend with coherent typography, reference-led components, and verified interaction.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  allow_implicit_invocation: true

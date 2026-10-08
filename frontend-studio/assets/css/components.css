@@ -1,0 +1,118 @@
+/* components.css —— 区块与组件样式（starter 用得上的最小集）
+   规则来源：references/04-components.md 与 01 的反 AI 味清单
+   —— 不用装饰性渐变、不给所有东西同一个圆角、不用侧边色条、不默认 ALL-CAPS */
+
+/* ---------- 容器与区块节奏（base.css 已有 .container / section） ---------- */
+.section-subtle { background: var(--bg-subtle); }
+.section-cta { padding-block: calc(var(--section-y) * 1.1); }
+
+/* ---------- 顶部导航 ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 20;
+  background: var(--bg);                                   /* 回退 */
+  border-bottom: 1px solid var(--border);
+}
+@supports (backdrop-filter: blur(8px)) {
+  .site-header { background: color-mix(in oklab, var(--bg) 88%, transparent); backdrop-filter: blur(8px); }
+}
+.site-header .container {
+  display: flex; align-items: center; gap: var(--space-5);
+  padding-block: var(--space-3);
+}
+.site-header nav { margin-inline-start: auto; }
+.site-header nav ul {
+  display: flex; gap: var(--space-5); list-style: none; margin: 0; padding: 0;
+}
+.site-header nav a {
+  font-size: var(--type-label); font-weight: var(--weight-label);
+  line-height: var(--leading-label); letter-spacing: var(--tracking-label);
+  color: var(--fg-muted); text-decoration: none;
+  padding-block: var(--space-1);
+}
+.site-header nav a:hover { color: var(--fg); }
+
+/* ---------- 首屏 ---------- */
+.hero { padding-block: clamp(3.5rem, 11vw, 8.5rem) clamp(3rem, 8vw, 6rem); }
+.hero-kicker {
+  font-size: var(--type-caption); font-weight: var(--weight-caption);
+  line-height: var(--leading-caption); letter-spacing: var(--tracking-caption); color: var(--fg-subtle);
+  margin-bottom: var(--space-4);
+}
+.hero h1 { margin-bottom: var(--space-5); }
+.hero-sub {
+  font-size: var(--type-lead); font-weight: var(--weight-lead);
+  line-height: var(--leading-lead); letter-spacing: var(--tracking-lead); color: var(--fg-muted);
+  max-width: var(--measure-lead); margin-bottom: var(--action-gap);
+}
+.hero-cta { display: flex; align-items: center; gap: var(--space-5); flex-wrap: wrap; }
+
+/* ---------- 按钮（触控目标 ≥ 44px） ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 44px; padding: 0.7rem 1.25rem;
+  border-radius: var(--radius-md); text-decoration: none;
+  max-width: 100%; text-align: center; white-space: normal;
+  transition: background-color var(--dur-short) var(--ease-out),
+              color var(--dur-short) var(--ease-out),
+              transform var(--dur-press) var(--ease-out);
+}
+.btn-primary { background: var(--accent); color: var(--accent-fg); }
+.btn-primary:hover { background: var(--accent-hover); }
+.btn-primary:active { background: var(--accent-active); transform: scale(0.98); }
+.btn-lg { min-height: 52px; padding: 0.95rem 1.75rem; }
+.link-quiet { color: var(--fg-muted); }
+.link-quiet:hover { color: var(--fg); }
+
+/* ---------- 特性列表 ---------- */
+.feature-list {
+  list-style: none; margin: var(--space-7) 0 0; padding: 0;
+  display: grid; gap: var(--space-7) var(--space-6);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+}
+.feature-list li { min-width: 0; }
+.feature-list h3 { margin-bottom: var(--space-3); }
+.feature-list p { color: var(--fg-muted); max-width: var(--measure); }
+
+/* ---------- 引文（不用侧边色条：那是模板痕迹） ---------- */
+blockquote { margin: var(--space-7) 0 0; max-width: var(--measure); }
+blockquote p {
+  font-size: var(--type-title); font-weight: var(--weight-title);
+  line-height: var(--leading-title); letter-spacing: var(--tracking-title);
+  text-wrap: pretty;
+}
+blockquote footer { margin-top: var(--space-4); color: var(--fg-muted); }
+blockquote footer, .cta-note, .site-footer {
+  font-size: var(--type-caption); font-weight: var(--weight-caption);
+  line-height: var(--leading-caption); letter-spacing: var(--tracking-caption);
+}
+
+/* ---------- 收口 CTA ---------- */
+.cta-note { margin-top: var(--space-4); color: var(--fg-muted); }
+.section-cta h2 { margin-bottom: var(--action-gap); }
+
+/* ---------- 页脚 ---------- */
+.site-footer {
+  border-top: 1px solid var(--border);
+  margin-top: var(--space-9); padding-block: var(--space-7);
+  color: var(--fg-muted);
+}
+.site-footer ul {
+  display: flex; flex-wrap: wrap; gap: var(--space-5);
+  list-style: none; margin: 0 0 var(--space-4); padding: 0;
+}
+.site-footer a { color: var(--fg-muted); }
+.site-footer a:hover { color: var(--fg); }
+
+/* ---------- 窄屏重排（不是等比缩小） ---------- */
+@media (max-width: 680px) {
+  .site-header .container { flex-wrap: wrap; row-gap: var(--space-2); }
+  .site-header nav { order: 3; width: 100%; margin-inline-start: 0; }
+  .site-header nav ul { gap: var(--space-4); flex-wrap: wrap; }
+  .hero h1 { max-width: none; }
+  .hero-cta { gap: var(--space-4); }
+}
+
+/* ---------- 用户偏好 ---------- */
+@media (prefers-reduced-transparency: reduce) {
+  .site-header { background: var(--bg); backdrop-filter: none; }
+}

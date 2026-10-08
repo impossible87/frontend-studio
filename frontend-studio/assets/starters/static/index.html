@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN" data-type-profile="brand">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>替换成：品牌 — 一句话价值主张</title>
+  <meta name="description" content="替换成：150 字以内、写给人看的描述">
+  <!-- 有真实 favicon 文件时再添加 link，不引用不存在的资源。 -->
+  <meta property="og:title" content="替换成分享标题">
+  <meta property="og:description" content="替换成分享描述">
+  <meta property="og:image" content="/og.png">
+  <link rel="stylesheet" href="./styles/tokens.css">
+  <link rel="stylesheet" href="./styles/base.css">
+  <link rel="stylesheet" href="./styles/motion.css">
+  <link rel="stylesheet" href="./styles/components.css">
+</head>
+<body class="js">
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="/" aria-label="返回首页"><strong>品牌名</strong></a>
+      <nav aria-label="主导航">
+        <ul>
+          <li><a href="#features">功能</a></li>
+          <li><a href="#proof">客户</a></li>
+          <li><a href="#cta">开始使用</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn-primary pressable" href="#cta">免费开始</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- 区块 1：首屏。首屏只能有一个主动作。 -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <!-- 展示角色显式选择；真实标题可用 type-line/type-phrase 控制语义断句。
+             有必要的事实说明再加 kicker，不作为默认装饰。 -->
+        <h1 id="hero-title" class="type-display" data-enter style="--i:1">替换成：结果前置的一句话标题</h1>
+        <p class="hero-sub" data-enter style="--i:2">替换成：给谁、解决什么、怎么做到（15–35 字）</p>
+        <p class="hero-cta" data-enter style="--i:3">
+          <a class="btn btn-primary pressable" href="#cta">替换成：主要操作</a>
+          <a class="link-quiet" href="#features">查看功能</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- 区块 2：特性。每条必须写结果，不写"强大/灵活"。 -->
+    <section id="features" class="section" aria-labelledby="features-title">
+      <div class="container">
+        <h2 id="features-title" data-reveal>替换成：这一组能力解决的核心问题</h2>
+        <ul class="feature-list">
+          <li data-reveal><h3>具体结果</h3><p>一句话说明它怎么做到。</p></li>
+          <li data-reveal><h3>具体结果</h3><p>一句话说明它怎么做到。</p></li>
+          <li data-reveal><h3>具体结果</h3><p>一句话说明它怎么做到。</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 区块 3：证据。没有真实材料就删掉这一节，不要编造。 -->
+    <section id="proof" class="section section-subtle" aria-labelledby="proof-title">
+      <div class="container-narrow">
+        <h2 id="proof-title" data-reveal>客户怎么说</h2>
+        <blockquote data-reveal>
+          <p>替换成真实引语：一句话结果 + 具体场景。</p>
+          <footer>— 真实姓名，真实职位</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- 区块 4：收口 CTA。页面结尾必须有一个明确的下一步。 -->
+    <section id="cta" class="section section-cta" aria-labelledby="cta-title">
+      <div class="container-narrow">
+        <h2 id="cta-title" data-reveal>替换成：为什么现在就开始</h2>
+        <a class="btn btn-primary btn-lg pressable" href="/signup" data-reveal>替换成：清晰的下一步操作</a>
+        <p class="cta-note">替换成：经核实的操作说明；没有材料就删除。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav aria-label="页脚导航">
+        <ul>
+          <li><a href="/privacy">隐私政策</a></li>
+          <li><a href="/terms">服务条款</a></li>
+          <li><a href="mailto:hi@example.com">联系我们</a></li>
+        </ul>
+      </nav>
+      <p>© <span id="year">2026</span> 品牌名</p>
+    </div>
+  </footer>
+
+  <script src="./scripts/reveal.js" defer></script>
+  <script>
+    // 首屏编排：进入即播放（不依赖滚动）
+    document.body.classList.add('is-ready');
+    document.getElementById('year').textContent = String(new Date().getFullYear());
+  </script>
+</body>
+</html>
